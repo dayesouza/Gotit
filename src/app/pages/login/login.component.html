@@ -1,9 +1,15 @@
-<button type="button" class="btn btn-block" (click)="signInWithGoogleA()">
-  <i class="fa fa-google" aria-hidden="true"></i>
-  Login with Google
-</button>
+<div class="col-sm-12 col-md-5">
+  <button
+    class="mt-3"
+    (click)="loginWithGoogle()"
+    mat-raised-button
+    color="primary"
+  >
+    Login with Google
+  </button>
 
-<button type="button" class="btn btn-block" (click)="logout()">
-  <i class="fa fa-google" aria-hidden="true"></i>
-  Lofout from Google
-</button>
+  <button type="button" class="btn btn-block" (click)="logout()">
+    <i class="fa fa-google" aria-hidden="true"></i>
+    Logout
+  </button>
+</div>
