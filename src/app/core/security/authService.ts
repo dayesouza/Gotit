@@ -17,7 +17,12 @@ export class AuthService {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
       }
+      console.log('user', this.userDetails);
     });
+  }
+
+  returnUser() {
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   isLoggedIn() {

@@ -13,6 +13,7 @@ import { UserComponent } from './pages/user/user.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NavigationComponent } from './pages/navigation/navigation.component';
 import { CoreModule } from './core/core.module';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { CoreModule } from './core/core.module';
     UserComponent,
     NotFoundComponent,
     NavigationComponent,
+    PageHeaderComponent,
+    PageHeaderComponent,
   ],
   imports: [
     AppRoutingModule,
