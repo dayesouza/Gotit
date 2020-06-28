@@ -32,7 +32,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>{{ menuName }}</span>
+      <span class="pointer" (click)="redirectToHome()">{{ menuName }}</span>
       <span class="ml-md-auto"></span>
       <a
         [ngClass]="{ hidden: isHandset$ | async }"

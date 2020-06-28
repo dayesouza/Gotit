@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { routes } from '../../core/routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -18,11 +20,14 @@ export class NavigationComponent {
 
   menuName = 'Gotit';
 
-  menuItems: any[] = [
-    { link: '/home', name: 'Home' },
-    { link: '/user', name: 'User' },
-    { link: '/login', name: 'Login' },
-  ];
+  menuItems: any[] = routes;
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {}
+
+  redirectToHome() {
+    this.router.navigateByUrl('/');
+  }
 }
