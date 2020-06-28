@@ -11,3 +11,17 @@ body {
   background: #303030;
   color: white;
 }
+
+.mat-nav-list a.active {
+  font-weight: bold;
+  background-color: dimgrey;
+}
+
+a.mat-button.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: unset;
+}

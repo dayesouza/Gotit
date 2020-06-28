@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

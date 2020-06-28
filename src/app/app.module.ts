@@ -15,9 +15,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
 import { AuthService } from './security/authService';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AngularMaterialModule } from './angular-material.module';
-import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NavigationComponent } from './pages/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
     HomeComponent,
     UserComponent,
     NotFoundComponent,
-    TopBarComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
