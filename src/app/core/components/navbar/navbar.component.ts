@@ -2,15 +2,14 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { routes } from '../../core/routes';
-import { Router } from '@angular/router';
+import { RoutesService } from '../../../shared/routesService';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.scss'],
 })
-export class NavigationComponent {
+export class NavbarComponent {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -20,14 +19,10 @@ export class NavigationComponent {
 
   menuName = 'Gotit';
 
-  menuItems: any[] = routes;
+  menuItems: any[];
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router
+    protected routeService: RoutesService
   ) {}
-
-  redirectToHome() {
-    this.router.navigateByUrl('/');
-  }
 }

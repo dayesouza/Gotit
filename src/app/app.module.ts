@@ -11,9 +11,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { NavigationComponent } from './pages/navigation/navigation.component';
 import { CoreModule } from './core/core.module';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { RoutesService } from './shared/routesService';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,6 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
     HomeComponent,
     UserComponent,
     NotFoundComponent,
-    NavigationComponent,
     PageHeaderComponent,
     PageHeaderComponent,
   ],
@@ -34,7 +33,7 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
     }),
     CoreModule,
   ],
-  providers: [],
+  providers: [RoutesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

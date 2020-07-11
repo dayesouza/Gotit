@@ -30,10 +30,17 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "node_modules/shards-ui/dist/css/shards.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "firebase/app",
+              "@firebase/app",
+              "@firebase/util",
+              "@firebase/component",
+              "@firebase/firestore"
+            ]
           },
           "configurations": {
             "production": {
