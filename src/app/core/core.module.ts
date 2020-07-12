@@ -7,6 +7,8 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,6 +17,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BrowserAnimationsModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    RouterModule,
+    HttpClientModule,
   ],
   declarations: [NavbarComponent],
   exports: [
@@ -22,6 +26,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BrowserModule,
     BrowserAnimationsModule,
     NavbarComponent,
+    RouterModule,
+    HttpClientModule,
   ],
   providers: [AuthService, AngularFireAuthGuard],
 })

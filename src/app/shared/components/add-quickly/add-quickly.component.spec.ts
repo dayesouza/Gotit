@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageHeaderComponent } from './page-header.component';
+import { AddQuicklyComponent } from './add-quickly.component';
 
-describe('PageHeaderComponent', () => {
-  let component: PageHeaderComponent;
-  let fixture: ComponentFixture<PageHeaderComponent>;
+describe('AddQuicklyComponent', () => {
+  let component: AddQuicklyComponent;
+  let fixture: ComponentFixture<AddQuicklyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageHeaderComponent ]
+      declarations: [ AddQuicklyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageHeaderComponent);
+    fixture = TestBed.createComponent(AddQuicklyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

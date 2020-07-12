@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <div class="text-center">
+    <h2 class="text-primary">Add a new one quickly here</h2>
+    <div class="mx-auto col-6 col-sm">
+      <form
+        class="form-inline justify-content-center"
+        [formGroup]="resourceForm"
+        (submit)="submit()"
+      >
+        <label class="sr-only" for="inlineFormInputName2">Name</label>
+        <input
+          formControlName="name"
+          type="text"
+          class="form-control mb-2 mr-sm-2 w-50"
+          id="inlineFormInputName2"
+          placeholder="Name"
+        />
+        <button type="submit" class="btn btn-primary mb-2">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
