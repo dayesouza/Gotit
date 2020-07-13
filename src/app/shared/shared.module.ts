@@ -5,9 +5,14 @@ import { RouterModule } from '@angular/router';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
 import { FormsModule } from '@angular/forms';
+import { QuickListComponent } from './components/quick-list/quick-list.component';
 
 @NgModule({
-  declarations: [FormFieldErrorComponent, ServerErrorMessagesComponent],
+  declarations: [
+    FormFieldErrorComponent,
+    ServerErrorMessagesComponent,
+    QuickListComponent,
+  ],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
   exports: [
     // shared modules
@@ -17,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     // shared components
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
+    QuickListComponent,
     FormsModule,
   ],
 })

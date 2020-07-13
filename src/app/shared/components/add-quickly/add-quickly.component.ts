@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item/item.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Item } from '../../models/item/item.model';
 
 @Component({
   selector: 'app-add-quickly',
@@ -9,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddQuicklyComponent implements OnInit {
   resourceForm: FormGroup;
+  items: Item[];
 
   constructor(
     protected itemService: ItemService,
@@ -20,7 +22,13 @@ export class AddQuicklyComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.resourceForm.value);
+    if (!this.resourceForm.valid) {
+      return;
+    }
+    const value = this.resourceForm.value;
+    this.itemService.persistDocument(value).then((ok) => {
+      this.resourceForm.reset();
+    });
   }
 
   private buildResourceForm(): void {
