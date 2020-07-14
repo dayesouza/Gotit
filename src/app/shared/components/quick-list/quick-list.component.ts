@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item/item.service';
 import { Item } from '../../models/item/item.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-quick-list',
@@ -13,8 +14,24 @@ export class QuickListComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemService.getAll().subscribe((res) => {
-      console.log('res', res);
-      this.items = res;
+      this.items = this.sort(res);
     });
+  }
+
+  sort(res) {
+    return res.sort((a, b) => {
+      if (b.createdDate < a.createdDate) {
+        return -1;
+      }
+      if (b.createdDate > a.createdDate) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  returnDate(date) {
+    const d = new Date(date.seconds * 1000);
+    return moment().to(d);
   }
 }

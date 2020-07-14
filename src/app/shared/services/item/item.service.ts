@@ -53,6 +53,7 @@ export class ItemService {
     } else {
       _id = this.firestore.createId();
       _document_.id = _id;
+      _document_.createdDate = new Date();
     }
 
     return this.firestore

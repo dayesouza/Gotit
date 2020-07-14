@@ -14,6 +14,7 @@ import { RoutesService } from './shared/routesService';
 import { AddQuicklyComponent } from './shared/components/add-quickly/add-quickly.component';
 import { SharedModule } from './shared/shared.module';
 import { ItemService } from './shared/services/item/item.service';
+import { LandingComponent } from './pages/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ItemService } from './shared/services/item/item.service';
     UserComponent,
     NotFoundComponent,
     AddQuicklyComponent,
+    LandingComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -5,10 +5,19 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserComponent } from './pages/user/user.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { LandingComponent } from './pages/landing/landing.component';
+import { redirectUnauthorizedTo, canActivate } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLanding = () => redirectUnauthorizedTo(['landing']);
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'landing', component: LandingComponent },
+  {
+    path: 'home',
+    component: HomeComponent,
+    ...canActivate(redirectUnauthorizedToLanding),
+  },
   { path: 'login', component: LoginComponent },
   {
     path: 'user',
