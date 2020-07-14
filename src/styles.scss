@@ -7,6 +7,13 @@ body {
 
 body {
   margin: 0;
-  // background: #303030;
-  // color: white;
 }
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+$theme-colors: (
+  primary: #17c671,
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
