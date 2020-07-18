@@ -10,6 +10,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, FooterComponent],
   exports: [
     NgBootstrapModule,
     BrowserModule,
@@ -30,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarComponent,
     RouterModule,
     HttpClientModule,
+    FooterComponent,
     ToastrModule,
   ],
   providers: [AuthService, AngularFireAuthGuard],

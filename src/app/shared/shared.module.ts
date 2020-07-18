@@ -6,14 +6,23 @@ import { FormFieldErrorComponent } from './components/form-field-error/form-fiel
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
 import { FormsModule } from '@angular/forms';
 import { QuickListComponent } from './components/quick-list/quick-list.component';
+import { ItemModalComponent } from './components/item-modal/item-modal.component';
+import { NgBootstrapModule } from './ngBootstrap.module';
 
 @NgModule({
   declarations: [
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
     QuickListComponent,
+    ItemModalComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule,
+    NgBootstrapModule,
+  ],
   exports: [
     // shared modules
     CommonModule,
@@ -24,6 +33,7 @@ import { QuickListComponent } from './components/quick-list/quick-list.component
     ServerErrorMessagesComponent,
     QuickListComponent,
     FormsModule,
+    NgBootstrapModule,
   ],
 })
 export class SharedModule {}

@@ -1,7 +1,15 @@
-<div class="jumbotron">
+<div class="add">
   <div class="text-center">
     <h2>Add a new one quickly here</h2>
-    <div class="mx-auto col-6 col-sm">
+    <div class="mx-auto col-md-9 col-sm">
+      <div
+        class="text-danger"
+        *ngIf="
+          !resourceForm.valid && (resourceForm.dirty || resourceForm.touched)
+        "
+      >
+        <small>Please enter a name</small>
+      </div>
       <form
         class="form-inline justify-content-center"
         [formGroup]="resourceForm"
@@ -11,7 +19,7 @@
         <input
           formControlName="name"
           type="text"
-          class="form-control mb-2 mr-sm-2 w-50"
+          class="form-control mb-2 mr-sm-2 w-75"
           id="inlineFormInputName2"
           placeholder="Name"
           [ngClass]="{
@@ -21,17 +29,9 @@
           }"
         />
         <button type="submit" class="btn btn-primary mb-2">
-          {{ resourceForm.errors }} Save
+          Save
         </button>
       </form>
-      <div
-        class="text-danger"
-        *ngIf="
-          !resourceForm.valid && (resourceForm.dirty || resourceForm.touched)
-        "
-      >
-        <small>Please enter a name</small>
-      </div>
     </div>
   </div>
 </div>

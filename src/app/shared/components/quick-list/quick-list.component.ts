@@ -10,11 +10,13 @@ import * as moment from 'moment';
 })
 export class QuickListComponent implements OnInit {
   items: Item[];
+  quantity: number;
   constructor(private itemService: ItemService) {}
 
   ngOnInit(): void {
-    this.itemService.getAll().subscribe((res) => {
-      this.items = this.sort(res);
+    const quantity = 8;
+    this.itemService.getLatest(quantity).subscribe((res) => {
+      this.items = res;
     });
   }
 
@@ -28,6 +30,10 @@ export class QuickListComponent implements OnInit {
       }
       return 0;
     });
+  }
+
+  openModalDetails() {
+    alert('modal');
   }
 
   returnDate(date) {

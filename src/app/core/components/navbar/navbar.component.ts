@@ -19,10 +19,8 @@ export class NavbarComponent {
 
   menuName = 'Gotit';
 
-  menuItems: any[];
-
   constructor(
     private breakpointObserver: BreakpointObserver,
-    protected routeService: RoutesService
+    public routeService: RoutesService
   ) {}
 }

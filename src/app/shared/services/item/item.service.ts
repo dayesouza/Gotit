@@ -35,6 +35,18 @@ export class ItemService {
       );
   }
 
+  getLatest(quantity): Observable<Item[]> {
+    const date = this.firestore.collection(this.baseName, (res) =>
+      res.orderBy('createdDate', 'desc').limit(quantity)
+    );
+    return date
+      .valueChanges()
+      .pipe(
+        map(this.jsonDataToResources.bind(this)),
+        catchError(this.handleError)
+      );
+  }
+
   getById(id: string): Observable<Item> {
     return this.firestore
       .collection(this.baseName)

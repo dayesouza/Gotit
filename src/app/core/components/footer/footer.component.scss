@@ -1,0 +1,15 @@
+@import "../../../colors.scss";
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $grey;
+  color: black;
+  text-align: center;
+}
+
+.ref-link {
+  font-size: 21px;
+  color: black;
+}
