@@ -14,9 +14,24 @@
           class="form-control mb-2 mr-sm-2 w-50"
           id="inlineFormInputName2"
           placeholder="Name"
+          [ngClass]="{
+            'is-invalid':
+              !resourceForm.valid &&
+              (resourceForm.dirty || resourceForm.touched)
+          }"
         />
-        <button type="submit" class="btn btn-primary mb-2">Save</button>
+        <button type="submit" class="btn btn-primary mb-2">
+          {{ resourceForm.errors }} Save
+        </button>
       </form>
+      <div
+        class="text-danger"
+        *ngIf="
+          !resourceForm.valid && (resourceForm.dirty || resourceForm.touched)
+        "
+      >
+        <small>Please enter a name</small>
+      </div>
     </div>
   </div>
 </div>

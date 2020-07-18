@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireAuthModule,
     RouterModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   declarations: [NavbarComponent],
   exports: [
@@ -28,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     RouterModule,
     HttpClientModule,
+    ToastrModule,
   ],
   providers: [AuthService, AngularFireAuthGuard],
 })

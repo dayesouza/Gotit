@@ -7,6 +7,7 @@ A project to keep track of the things you need to buy for you house.
 # Programming:
 
 Build with Angular 10, Firestore and Firebase Auth, Sass and deployed with Azure.
+Base on bootstrap and [Shards Design](https://designrevision.com/demo/shards/)
 
 # Run
 
