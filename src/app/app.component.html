@@ -1,6 +1,6 @@
-<app-navbar> </app-navbar>
+<app-navbar *ngIf="showHeaderFooter"> </app-navbar>
 <div class="container-fluid mt-2">
   <router-outlet></router-outlet>
 </div>
 
-<app-footer></app-footer>
+<app-footer *ngIf="showHeaderFooter"></app-footer>

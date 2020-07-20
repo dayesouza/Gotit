@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent implements OnInit {
-  constructor() {}
+  advantages: any[];
+  year: number;
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.year = new Date().getFullYear();
+    this.advantages = [
+      { 'text': 'Add your items' },
+      { 'text': 'Keep track of your purchases' },
+      { 'text': 'Share yout list with your family' },
+    ]
+  }
 }

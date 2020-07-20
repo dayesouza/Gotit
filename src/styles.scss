@@ -4,10 +4,6 @@
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 
-body {
-  background-color: $background !important;
-}
-
 $theme-colors: (
   primary: $primary,
 );
@@ -17,3 +13,15 @@ $theme-colors: (
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
+
+body {
+  background-color: $background;
+}
+
+.landing {
+  background: linear-gradient(to bottom right, #17c671, #6be6ab);
+  div.container-fluid {
+    margin-bottom: unset !important;
+    margin-top: unset !important;
+  }
+}

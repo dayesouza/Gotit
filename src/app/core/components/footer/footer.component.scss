@@ -1,12 +1,16 @@
 @import "../../../colors.scss";
 
 footer {
+  color: black;
+  text-align: right;
+}
+
+footer.fixed {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: $grey;
-  color: black;
   text-align: center;
+  background-color: $grey;
 }
 
 .ref-link {

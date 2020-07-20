@@ -1,1 +1,46 @@
-<p>landing works!</p>
+<div class="wrapper">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <div class="d-flex flex-column justify-content-between">
+        <div class="p-2">
+          <h1>Gotit</h1>
+
+          <h2>You want it?</h2>
+        </div>
+        <div class="p-2">
+          <div class="text mt-5">
+            <p>
+              A system to manage all the things that you know you’ll need to buy
+            </p>
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="mt-5">
+            <div class="row ml-2 my-2" *ngFor="let item of advantages">
+              <button type="button" class="btn btn-dark p-3">
+                {{ item.text }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+      <div class="d-flex flex-column justify-content-between vh">
+        <div class="p-2">IMAGE</div>
+        <div class="p-2">
+          <button
+            type="button"
+            class="btn btn-outline-success login-button px-5"
+          >
+            Start with login here
+          </button>
+        </div>
+        <div class="mt-auto p-2 pull-right">
+          <app-footer landing="true"></app-footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
