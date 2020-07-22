@@ -27,15 +27,20 @@
     </div>
 
     <div class="col-md-6 col-sm-12">
-      <div class="d-flex flex-column justify-content-between vh">
-        <div class="p-2">IMAGE</div>
-        <div class="p-2">
-          <button
-            type="button"
-            class="btn btn-outline-success login-button px-5"
+      <div class="d-flex flex-column justify-content-center vh">
+        <img
+          src="../../../assets/imgs/img_add_landing.svg"
+          alt="woman adding an
+        item"
+          class="img-fluid mt-5 d-none d-md-block flex-1"
+        />
+        <div class="p-2 w-100 flex-1">
+          <a
+            routerLink="/login"
+            class="btn btn-outline-success login-button px-5 py-3 w-100"
           >
             Start with login here
-          </button>
+          </a>
         </div>
         <div class="mt-auto p-2 pull-right">
           <app-footer landing="true"></app-footer>
