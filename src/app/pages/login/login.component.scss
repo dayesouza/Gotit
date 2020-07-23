@@ -1,0 +1,40 @@
+@import "../../colors.scss";
+
+h1.title {
+  font-size: 70px;
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 600px) {
+  div.w-100-sm {
+    width: 100%;
+  }
+
+  div.login {
+    width: 90% !important;
+  }
+}
+
+div.login {
+  border-radius: 18px;
+  box-shadow: 6px 10px 16px #00000029;
+  border-left: 15px solid $primary;
+  width: 35%;
+  background-color: white;
+  height: 90%;
+  box-shadow: green($color: #000000);
+}
+
+h5 {
+  font-weight: normal;
+}
+
+.fb-button {
+  background-color: #0c4f7c;
+  border-color: #0c4f7c;
+}
+
+.g-button {
+  background-color: #007bff;
+  border-color: #007bff;
+}

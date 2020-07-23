@@ -4,18 +4,38 @@ import { Component, Renderer2, ElementRef } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'gotit';
-  showHeaderFooter = true;
+  showFooter = true;
+  showHeader = true;
 
-  constructor(private router: Router, private el: ElementRef, private renderer: Renderer2) {
+  constructor(
+    private router: Router,
+    private el: ElementRef,
+    private renderer: Renderer2
+  ) {
     router.events.subscribe((val) => {
-      this.showHeaderFooter = location.pathname !== '/landing';
+      this.hideHeaderOrFooter();
       if (location.pathname === '/landing') {
-        this.renderer.setAttribute(this.el.nativeElement.ownerDocument.body, 'class', 'landing');
+        this.renderer.setAttribute(
+          this.el.nativeElement.ownerDocument.body,
+          'class',
+          'landing'
+        );
+      } else {
+        this.renderer.removeAttribute(
+          this.el.nativeElement.ownerDocument.body,
+          'class'
+        );
       }
     });
+  }
+
+  hideHeaderOrFooter() {
+    this.showHeader =
+      location.pathname !== '/landing' && location.pathname !== '/login';
+    this.showFooter = location.pathname !== '/landing';
   }
 }

@@ -53,6 +53,13 @@ export class AuthService {
     );
   }
 
+  signInWithFacebook() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    return this.oAuthLogin(provider).then((l) =>
+      this.router.navigate(['user'])
+    );
+  }
+
   private oAuthLogin(provider) {
     return this.afAuth.signInWithPopup(provider);
   }
