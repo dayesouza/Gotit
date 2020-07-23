@@ -1,25 +1,14 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    aaaaa
-  </div>
-  <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="modal.close('Save click')"
-    >
-      Save
-    </button>
-  </div>
-</ng-template>
+<div class="modal-header">
+  <h4 class="modal-title text-center">{{item.name}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>Hello, {{item.name}}!</p>
+</div>
+<div class="btn-group btn-group-lg w-100" role="group" aria-label="Function buttons">
+  <button type="button" class="btn btn-info"><i class="fa fa-edit"></i></button>
+  <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+  <button type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i></button>
+</div>

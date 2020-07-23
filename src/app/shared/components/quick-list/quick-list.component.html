@@ -5,7 +5,7 @@
       <div class="card-body">
         <h4>
           {{ item.name }}
-          <div (click)="openModalDetails()" class="pointer pull-right">
+          <div (click)="openModalDetails(item)" class="pointer pull-right">
             <i class="fa fa-info-circle"></i>
           </div>
         </h4>
@@ -16,5 +16,3 @@
     </div>
   </div>
 </div>
-
-<app-item-modal></app-item-modal>

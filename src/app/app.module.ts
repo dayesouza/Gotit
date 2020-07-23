@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { ItemService } from './shared/services/item/item.service';
 import { LandingComponent } from './pages/landing/landing.component';
 import { ItemsComponent } from './pages/items/items.component';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { ItemsComponent } from './pages/items/items.component';
     CoreModule,
     SharedModule,
   ],
-  providers: [RoutesService, ItemService],
+  providers: [RoutesService, ItemService, NgbActiveModal],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

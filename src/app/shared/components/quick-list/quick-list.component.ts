@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item/item.service';
 import { Item } from '../../models/item/item.model';
 import * as moment from 'moment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ItemModalComponent } from '../item-modal/item-modal.component';
 
 @Component({
   selector: 'app-quick-list',
@@ -11,7 +13,9 @@ import * as moment from 'moment';
 export class QuickListComponent implements OnInit {
   items: Item[];
   quantity: number;
-  constructor(private itemService: ItemService) {}
+  modalOpen = false;
+
+  constructor(private itemService: ItemService, private modalService: NgbModal) {}
 
   ngOnInit(): void {
     const quantity = 8;
@@ -32,8 +36,9 @@ export class QuickListComponent implements OnInit {
     });
   }
 
-  openModalDetails() {
-    alert('modal');
+  openModalDetails(item: Item) {
+    const modalRef = this.modalService.open(ItemModalComponent);
+    modalRef.componentInstance.item = item;
   }
 
   returnDate(date) {

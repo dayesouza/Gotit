@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgbModalModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbAlertModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 const values = [NgbModalModule, NgbAlertModule];
 

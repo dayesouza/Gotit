@@ -6,7 +6,7 @@ export class Item {
   public createdDate?: Date;
   public createdBy?: string;
   public boughtDate?: Date;
-  public value?: string;
+  public price?: string;
 
   fromJson(jsonData: any): Item {
     return Object.assign(new Item(), jsonData);
