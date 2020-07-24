@@ -74,15 +74,6 @@ export class ItemService {
       .set(Object.assign({}, _document_));
   }
 
-  // update(resource: Item): Observable<Item> {
-  //   const url = this.apiPath + '/' + resource.id;
-  //   return this.http.put(url, resource).pipe(
-  //     // manipulate the return
-  //     map(() => resource), // Return the same resource
-  //     catchError(this.handleError) // Manipulate error
-  //   );
-  // }
-
   delete(id: string): Promise<any> {
     return this.firestore.collection(this.baseName).doc(id).delete();
   }

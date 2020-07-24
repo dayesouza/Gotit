@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { QuickListComponent } from './components/quick-list/quick-list.component';
 import { ItemModalComponent } from './components/item-modal/item-modal.component';
 import { NgBootstrapModule } from './ngBootstrap.module';
+import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NgBootstrapModule } from './ngBootstrap.module';
     ServerErrorMessagesComponent,
     QuickListComponent,
     ItemModalComponent,
+    FirebaseDatePipe,
   ],
   imports: [
     CommonModule,
@@ -28,12 +30,13 @@ import { NgBootstrapModule } from './ngBootstrap.module';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    NgBootstrapModule,
     // shared components
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
     QuickListComponent,
     FormsModule,
-    NgBootstrapModule,
+    FirebaseDatePipe,
   ],
 })
 export class SharedModule {}

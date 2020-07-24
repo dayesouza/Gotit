@@ -1,14 +1,116 @@
-<div class="modal-header">
-  <h4 class="modal-title text-center">{{item.name}}</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+<div class="modal-header text-center">
+  <h4 class="modal-title w-100" *ngIf="!editing">{{ item.name }}</h4>
+  <h4 class="modal-title 2-100" *ngIf="editing">Edit item</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <p>Hello, {{item.name}}!</p>
+  <div *ngIf="editing">
+    <form [formGroup]="resourceForm" autocomplete="off">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              id="name-modal"
+              placeholder="Name"
+            />
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div class="form-group">
+            <input
+              type="number"
+              class="form-control"
+              id="price-modal"
+              formControlName="price"
+              placeholder="Price"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="link-modal"
+          formControlName="link"
+          placeholder="Link"
+        />
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="!editing">
+    <h2 class="text-center">{{ item.price }}</h2>
+
+    <div class="w-100 text-center">
+      <a href="{{ returnLink(item.link) }}"
+        ><i class="fa fa-external-link" *ngIf="item.link"></i>
+        {{ item.link }}</a
+      >
+    </div>
+    <small class="pull-right text-muted mb-2"
+      >Added by Day on {{ item.createdDate | firebaseDate | date }}</small
+    >
+  </div>
 </div>
-<div class="btn-group btn-group-lg w-100" role="group" aria-label="Function buttons">
-  <button type="button" class="btn btn-info"><i class="fa fa-edit"></i></button>
-  <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-  <button type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i></button>
+<div
+  class="btn-group btn-group-lg w-100"
+  role="group"
+  aria-label="Function buttons"
+>
+  <button
+    type="button"
+    class="btn btn-secondary"
+    [disabled]="editing"
+    (click)="toggleEditing()"
+  >
+    <i class="fa fa-edit"></i>
+  </button>
+  <button
+    type="button"
+    class="btn btn-danger"
+    (click)="toggleEditing()"
+    *ngIf="editing"
+  >
+    <i class="fa fa-times"></i>
+  </button>
+  <button
+    type="button"
+    class="btn btn-danger"
+    (click)="delete()"
+    *ngIf="!editing"
+  >
+    <i class="fa fa-trash"></i>
+  </button>
+  <button
+    type="button"
+    [ngClass]="{
+      'btn-outline-primary': !item.boughtDate,
+      'btn-primary': item.boughtDate
+    }"
+    class="btn"
+    *ngIf="!editing"
+    (click)="bought()"
+  >
+    <i class="fa fa-check"></i>
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    *ngIf="editing"
+    (click)="submit()"
+  >
+    <i class="fa fa-check"></i>
+  </button>
 </div>
