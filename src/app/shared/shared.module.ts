@@ -7,8 +7,11 @@ import { ServerErrorMessagesComponent } from './components/server-error-messages
 import { FormsModule } from '@angular/forms';
 import { QuickListComponent } from './components/quick-list/quick-list.component';
 import { ItemModalComponent } from './components/item-modal/item-modal.component';
+import { ListItemComponent } from './components/list-item/list-item.component';
 import { NgBootstrapModule } from './ngBootstrap.module';
 import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
+import { LinkPipe } from './pipes/link.pipe';
+import { FilterPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
     ServerErrorMessagesComponent,
     QuickListComponent,
     ItemModalComponent,
+    ListItemComponent,
     FirebaseDatePipe,
+    LinkPipe,
+    FilterPipe,
   ],
   imports: [
     CommonModule,
@@ -36,7 +42,11 @@ import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
     ServerErrorMessagesComponent,
     QuickListComponent,
     FormsModule,
+    ListItemComponent,
+    // shared pipes
     FirebaseDatePipe,
+    LinkPipe,
+    FilterPipe,
   ],
 })
 export class SharedModule {}

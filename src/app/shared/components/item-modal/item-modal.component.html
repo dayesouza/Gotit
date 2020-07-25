@@ -54,7 +54,7 @@
     <h2 class="text-center">{{ item.price }}</h2>
 
     <div class="w-100 text-center">
-      <a href="{{ returnLink(item.link) }}"
+      <a href="{{ item.link | link }}" target="_blank"
         ><i class="fa fa-external-link" *ngIf="item.link"></i>
         {{ item.link }}</a
       >
@@ -71,6 +71,7 @@
 >
   <button
     type="button"
+    *ngIf="!onlyEditModal"
     class="btn btn-secondary"
     [disabled]="editing"
     (click)="toggleEditing()"

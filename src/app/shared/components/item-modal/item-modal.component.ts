@@ -12,8 +12,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ItemModalComponent implements OnInit {
   @Input() item: Item;
+  @Input() editing = false;
+  @Input() onlyEditModal = false;
   closeResult = '';
-  editing = false;
   editItem: Item;
   resourceForm: FormGroup;
 
@@ -28,13 +29,6 @@ export class ItemModalComponent implements OnInit {
     this.buildResourceForm();
   }
 
-  returnLink() {
-    if (!this.item.link?.startsWith('http')) {
-      return `//${this.item.link}`;
-    }
-    return this.item.link;
-  }
-
   private buildResourceForm(): void {
     this.resourceForm = this.formBuilder.group({
       id: [this.item.id],
@@ -45,6 +39,9 @@ export class ItemModalComponent implements OnInit {
   }
 
   toggleEditing() {
+    if (this.onlyEditModal) {
+      return this.activeModal.close();
+    }
     this.editing = !this.editing;
   }
 
@@ -80,11 +77,9 @@ export class ItemModalComponent implements OnInit {
   }
 
   bought() {
-    if (this.item.boughtDate) {
-      this.item.boughtDate = null;
-    } else {
-      this.item.boughtDate = new Date();
-    }
+    this.item.boughtDate = null
+      ? (this.item.boughtDate = new Date())
+      : (this.item.boughtDate = null);
     this.save();
   }
 }

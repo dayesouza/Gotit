@@ -1,1 +1,118 @@
-<p>items works!</p>
+<div class="title row">
+  <div class="col"><h1>Items</h1></div>
+  <div class="col">
+    <button class="btn btn-secondary float-right" (click)="addItemOpen = true">
+      <i class="fa fa-plus"></i> Add Item
+    </button>
+  </div>
+</div>
+
+<div *ngIf="addItemOpen" class="card mb-4">
+  <div class="card-body">
+    <form [formGroup]="resourceForm" autocomplete="off">
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+          <div class="form-group">
+            <label for="name">Item name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              id="name"
+              placeholder="Tv"
+            />
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="form-group">
+            <label for="name">Price</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+              </div>
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                formControlName="price"
+                placeholder="12.99"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+          <div class="form-group">
+            <label for="name">Link</label>
+            <input
+              type="text"
+              class="form-control"
+              id="link"
+              formControlName="link"
+              placeholder="www.google.com/product"
+            />
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 float-right">
+          <button class="btn btn-outline-danger mr-2" (click)="cancelAdd()">
+            Cancel
+          </button>
+          <button class="btn btn-success" (click)="add()">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-sm-12">
+    <input
+      [(ngModel)]="search"
+      type="text"
+      class="form-control mb-2"
+      id="inlineFormInputName2"
+      placeholder="Search"
+    />
+  </div>
+  <div class="col pull-right">
+    Order by
+    <div class="d-inline-block ml-2" ngbDropdown #myDrop="ngbDropdown">
+      <button
+        class="btn btn-block btn-outline-dark mr-2"
+        id="dropdownManual"
+        ngbDropdownAnchor
+        (focus)="myDrop.open()"
+      >
+        {{ orderLabel }}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownManual">
+        <button
+          [ngClass]="{ sort: orderLabel == item.fieldLabel }"
+          *ngFor="let item of sortItems"
+          ngbDropdownItem
+          (click)="changeOrder(item.field, item.fieldLabel)"
+        >
+          {{ item.fieldLabel }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2 class="mt-4">Next to buy</h2>
+  <app-list-item
+    [items]="itemsToBuy | filter: search"
+    (delete)="delete($event)"
+    (update)="update($event)"
+  ></app-list-item>
+
+  <h2 class="mt-4">Bought</h2>
+  <app-list-item
+    [items]="itemsBought | filter: search"
+    (delete)="delete($event)"
+    (update)="update($event)"
+  ></app-list-item>
+</div>

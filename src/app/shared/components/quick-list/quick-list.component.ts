@@ -15,24 +15,15 @@ export class QuickListComponent implements OnInit {
   quantity: number;
   modalOpen = false;
 
-  constructor(private itemService: ItemService, private modalService: NgbModal) {}
+  constructor(
+    private itemService: ItemService,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit(): void {
     const quantity = 8;
     this.itemService.getLatest(quantity).subscribe((res) => {
       this.items = res;
-    });
-  }
-
-  sort(res) {
-    return res.sort((a, b) => {
-      if (b.createdDate < a.createdDate) {
-        return -1;
-      }
-      if (b.createdDate > a.createdDate) {
-        return 1;
-      }
-      return 0;
     });
   }
 
