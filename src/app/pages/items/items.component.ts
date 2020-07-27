@@ -41,24 +41,24 @@ export class ItemsComponent implements OnInit {
   private buildResourceForm(): void {
     this.resourceForm = this.formBuilder.group({
       id: [null],
-      name: [null, [Validators.required, Validators.minLength(2)]],
+      name: [null, [Validators.required]],
       price: [null],
       link: [null],
     });
   }
 
-  cancelAdd() {
+  resetFields() {
     this.resourceForm.reset();
     this.addItemOpen = false;
   }
 
   add() {
     if (this.resourceForm.invalid) {
-      console.log('INVALIDDD');
+      this.resourceForm.markAsDirty();
       return;
     }
     const item = this.resourceForm.value;
-    console.log(item);
+    this.save(item);
   }
 
   setItemsToBuy(items) {
@@ -113,9 +113,10 @@ export class ItemsComponent implements OnInit {
     });
   }
 
-  update(item) {
+  save(item) {
     this.itemService.persistDocument(item).then((s) => {
       this.toastr.success('Saved with success!');
+      this.resetFields();
     });
   }
 }

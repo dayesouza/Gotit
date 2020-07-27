@@ -22,7 +22,21 @@
               formControlName="name"
               id="name-modal"
               placeholder="Name"
+              [ngClass]="{
+                'is-invalid':
+                  !resourceForm.valid &&
+                  (resourceForm.dirty || resourceForm.touched)
+              }"
             />
+            <div
+              class="text-danger"
+              *ngIf="
+                !resourceForm.valid &&
+                (resourceForm.dirty || resourceForm.touched)
+              "
+            >
+              <small>Please enter a name</small>
+            </div>
           </div>
         </div>
         <div class="col-sm-12 col-md-6">

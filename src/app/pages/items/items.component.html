@@ -20,7 +20,21 @@
               formControlName="name"
               id="name"
               placeholder="Tv"
+              [ngClass]="{
+                'is-invalid':
+                  !resourceForm.valid &&
+                  (resourceForm.dirty || resourceForm.touched)
+              }"
             />
+            <div
+              class="text-danger"
+              *ngIf="
+                !resourceForm.valid &&
+                (resourceForm.dirty || resourceForm.touched)
+              "
+            >
+              <small>Please enter a name</small>
+            </div>
           </div>
         </div>
         <div class="col-sm-12 col-md-4">
@@ -56,10 +70,21 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-4 float-right">
-          <button class="btn btn-outline-danger mr-2" (click)="cancelAdd()">
-            Cancel
-          </button>
-          <button class="btn btn-success" (click)="add()">Save</button>
+          <div class="row h-100 mb-1">
+            <div class="w-50 m-0 d-flex flex-column col mb-3">
+              <button
+                class="mt-auto btn btn-outline-danger mr-2"
+                (click)="resetFields()"
+              >
+                Cancel
+              </button>
+            </div>
+            <div class="w-50 m-0 d-flex flex-column col mb-3">
+              <button class="btn btn-success mt-auto" (click)="add()">
+                Save
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </form>
@@ -80,6 +105,7 @@
     Order by
     <div class="d-inline-block ml-2" ngbDropdown #myDrop="ngbDropdown">
       <button
+        type="button"
         class="btn btn-block btn-outline-dark mr-2"
         id="dropdownManual"
         ngbDropdownAnchor
@@ -106,13 +132,13 @@
   <app-list-item
     [items]="itemsToBuy | filter: search"
     (delete)="delete($event)"
-    (update)="update($event)"
+    (update)="save($event)"
   ></app-list-item>
 
   <h2 class="mt-4">Bought</h2>
   <app-list-item
     [items]="itemsBought | filter: search"
     (delete)="delete($event)"
-    (update)="update($event)"
+    (update)="save($event)"
   ></app-list-item>
 </div>

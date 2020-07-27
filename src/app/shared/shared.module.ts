@@ -8,7 +8,6 @@ import { FormsModule } from '@angular/forms';
 import { QuickListComponent } from './components/quick-list/quick-list.component';
 import { ItemModalComponent } from './components/item-modal/item-modal.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
-import { NgBootstrapModule } from './ngBootstrap.module';
 import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
 import { LinkPipe } from './pipes/link.pipe';
 import { FilterPipe } from './pipes/search.pipe';
@@ -24,19 +23,12 @@ import { FilterPipe } from './pipes/search.pipe';
     LinkPipe,
     FilterPipe,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    FormsModule,
-    NgBootstrapModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
   exports: [
     // shared modules
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    NgBootstrapModule,
     // shared components
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,

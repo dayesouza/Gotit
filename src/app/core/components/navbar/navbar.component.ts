@@ -10,14 +10,8 @@ import { RoutesService } from '../../../shared/routesService';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    );
-
   menuName = 'Gotit';
+  isMenuCollapsed = true;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
