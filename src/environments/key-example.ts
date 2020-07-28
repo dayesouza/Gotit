@@ -8,3 +8,5 @@ export const firebase = {
   appId: 'appId',
   measurementId: 'measurement',
 };
+
+export const cuttlyKey = 'your_key';

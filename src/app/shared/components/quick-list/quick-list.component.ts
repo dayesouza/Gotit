@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item/item.service';
-import { Item } from '../../models/item/item.model';
+import { Item } from '../../models/item.model';
 import * as moment from 'moment';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ItemModalComponent } from '../item-modal/item-modal.component';

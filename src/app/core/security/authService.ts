@@ -7,13 +7,15 @@ import { RoutesService } from '../../shared/routesService';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   userDetails: firebase.User = null;
+  error: string;
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
-    private routesService: RoutesService
+    protected routesService: RoutesService
   ) {
-    this.afAuth.authState.subscribe((user) => {
+    this.afAuth.onAuthStateChanged((user) => {
       if (user) {
+        console.log('new user', user);
         this.userDetails = user;
         localStorage.setItem('user', JSON.stringify(user));
         JSON.parse(localStorage.getItem('user'));
@@ -24,8 +26,11 @@ export class AuthService {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
       }
-      console.log('user', this.userDetails);
     });
+  }
+
+  updateProfile(displayName: string) {
+    return this.userDetails.updateProfile({ displayName });
   }
 
   returnUser() {
@@ -42,25 +47,29 @@ export class AuthService {
   logout() {
     this.afAuth.signOut().then((res) => {
       localStorage.removeItem('user');
-      this.router.navigate(['home']);
+      this.router.navigate(['landing']);
     });
   }
 
   signInWithGoogle() {
+    this.error = null;
     const provider = new firebase.auth.GoogleAuthProvider();
-    return this.oAuthLogin(provider).then((l) =>
-      this.router.navigate(['user'])
+    return this.oAuthLogin(provider).then((_) =>
+      this.router.navigate(['home'])
     );
   }
 
   signInWithFacebook() {
+    this.error = null;
     const provider = new firebase.auth.FacebookAuthProvider();
-    return this.oAuthLogin(provider).then((l) =>
-      this.router.navigate(['user'])
+    return this.oAuthLogin(provider).then((_) =>
+      this.router.navigate(['home'])
     );
   }
 
   private oAuthLogin(provider) {
-    return this.afAuth.signInWithPopup(provider);
+    return this.afAuth.signInWithPopup(provider).catch((err) => {
+      this.error = err.message;
+    });
   }
 }

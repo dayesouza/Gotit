@@ -103,13 +103,12 @@
   </div>
   <div class="col pull-right">
     Order by
-    <div class="d-inline-block ml-2" ngbDropdown #myDrop="ngbDropdown">
+    <div class="d-inline-block ml-2" ngbDropdown>
       <button
         type="button"
         class="btn btn-block btn-outline-dark mr-2"
         id="dropdownManual"
-        ngbDropdownAnchor
-        (focus)="myDrop.open()"
+        ngbDropdownToggle
       >
         {{ orderLabel }}
       </button>

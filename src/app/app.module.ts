@@ -13,7 +13,6 @@ import { CoreModule } from './core/core.module';
 import { RoutesService } from './shared/routesService';
 import { AddQuicklyComponent } from './shared/components/add-quickly/add-quickly.component';
 import { SharedModule } from './shared/shared.module';
-import { ItemService } from './shared/services/item/item.service';
 import { LandingComponent } from './pages/landing/landing.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -38,7 +37,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
     CoreModule,
     SharedModule,
   ],
-  providers: [RoutesService, ItemService, NgbActiveModal],
+  providers: [RoutesService, NgbActiveModal],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

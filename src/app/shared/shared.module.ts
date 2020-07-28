@@ -11,6 +11,8 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
 import { LinkPipe } from './pipes/link.pipe';
 import { FilterPipe } from './pipes/search.pipe';
+import { CuttlyService } from './services/cuttly/cuttly.service';
+import { ItemService } from './services/item/item.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { FilterPipe } from './pipes/search.pipe';
     LinkPipe,
     FilterPipe,
   ],
+  providers: [CuttlyService, ItemService],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
   exports: [
     // shared modules
@@ -39,6 +42,7 @@ import { FilterPipe } from './pipes/search.pipe';
     FirebaseDatePipe,
     LinkPipe,
     FilterPipe,
+    // shared services
   ],
 })
 export class SharedModule {}

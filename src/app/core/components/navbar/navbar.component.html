@@ -25,6 +25,13 @@
           [routerLink]="item.link"
           >{{ item.name }} <span class="sr-only">(current)</span>
         </a>
+        <a
+          *ngIf="item.menuRight"
+          class="nav-link d-block d-md-none d-lg-none"
+          (click)="isMenuCollapsed = true"
+          [routerLink]="item.link"
+          >{{ item.name }} <span class="sr-only">(current)</span>
+        </a>
       </li>
     </ul>
 

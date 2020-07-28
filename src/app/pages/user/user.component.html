@@ -25,5 +25,48 @@
     <h1 class="text-primary d-none d-sm-block d-xs-block">
       Hello, {{ user.displayName }}!
     </h1>
+    <div
+      class="text-danger"
+      *ngIf="
+        !resourceForm.valid && (resourceForm.dirty || resourceForm.touched)
+      "
+    >
+      <small>Please enter a nickname</small>
+    </div>
+    <form class="mt-4" [formGroup]="resourceForm" (submit)="submit()">
+      <div class="form-group">
+        <label for="name">Nickname</label>
+        <input
+          formControlName="displayName"
+          type="text"
+          class="form-control mb-2 mr-sm-2 w-75"
+          id="inlineFormInputName2"
+          placeholder="How would you like to be called?"
+          [ngClass]="{
+            'is-invalid':
+              !resourceForm.valid &&
+              (resourceForm.dirty || resourceForm.touched)
+          }"
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">Email</label>
+        <input
+          formControlName="email"
+          type="text"
+          readonly="true"
+          class="form-control mb-2 mr-sm-2 w-75"
+          id="email"
+          [ngClass]="{
+            'is-invalid':
+              !resourceForm.valid &&
+              (resourceForm.dirty || resourceForm.touched)
+          }"
+        />
+      </div>
+      <div class="form-group w-75">
+        <button class="btn btn-success float-right">Update</button>
+      </div>
+    </form>
   </div>
 </div>

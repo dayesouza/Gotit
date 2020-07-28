@@ -74,7 +74,8 @@
       >
     </div>
     <small class="pull-right text-muted mb-2"
-      >Added by Day on {{ item.createdDate | firebaseDate | date }}</small
+      >Added by {{ item.user?.displayName || "unknown" }} on
+      {{ item.createdDate | firebaseDate | date }}</small
     >
   </div>
 </div>

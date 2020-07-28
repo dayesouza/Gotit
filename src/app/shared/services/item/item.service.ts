@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Item } from '../../models/item/item.model';
+import { Item } from '../../models/item.model';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -7,6 +7,9 @@ import {
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { AuthService } from '../../../core/security/authService';
+import { LoadingService } from '../../../core/services/loading/loading.service';
+import { CuttlyService } from '../cuttly/cuttly.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +18,12 @@ export class ItemService {
   baseName = 'items';
   resource: Item;
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(
+    private firestore: AngularFirestore,
+    private authService: AuthService,
+    private loadingService: LoadingService,
+    private cuttlyService: CuttlyService
+  ) {
     this.resource = new Item();
   }
 
@@ -58,24 +66,48 @@ export class ItemService {
       );
   }
 
+  getUser() {
+    return this.authService.returnUser();
+  }
+
+  shortenUrl(link: string) {
+    if (!link) {
+      return;
+    }
+    return this.cuttlyService.shortenLink(link);
+  }
+
   persistDocument(_document_) {
+    this.loadingService.startLoading();
     let _id: any;
     if (_document_.id) {
       _id = _document_.id;
     } else {
       _id = this.firestore.createId();
       _document_.id = _id;
+      _document_.user = this.getUser();
       _document_.createdDate = new Date();
+    }
+
+    if (_document_.link) {
+      _document_.link = this.shortenUrl(_document_.link);
     }
 
     return this.firestore
       .collection(this.baseName)
       .doc(_id)
-      .set(Object.assign({}, _document_));
+      .set(Object.assign({}, _document_))
+      .finally(() => this.loadingService.stopLoading());
   }
 
   delete(id: string): Promise<any> {
-    return this.firestore.collection(this.baseName).doc(id).delete();
+    this.loadingService.startLoading();
+
+    return this.firestore
+      .collection(this.baseName)
+      .doc(id)
+      .delete()
+      .finally(() => this.loadingService.stopLoading());
   }
 
   // Protected
@@ -93,7 +125,6 @@ export class ItemService {
   }
 
   protected handleError(error: any): Observable<any> {
-    console.log('ERROR:', error);
     return throwError(error);
   }
 }

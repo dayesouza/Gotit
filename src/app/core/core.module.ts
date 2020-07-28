@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoadingService } from './services/loading/loading.service';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 
 @NgModule({
   imports: [
@@ -21,7 +23,14 @@ import { FooterComponent } from './components/footer/footer.component';
     AngularFireAuthModule,
     RouterModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+    }),
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.chasingDots,
+      primaryColour: '#17c671',
+      secondaryColour: 'black',
+    }),
   ],
   declarations: [NavbarComponent, FooterComponent],
   exports: [
@@ -33,7 +42,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     FooterComponent,
     ToastrModule,
+    NgxLoadingModule,
   ],
-  providers: [AuthService, AngularFireAuthGuard],
+  providers: [AuthService, AngularFireAuthGuard, LoadingService],
 })
 export class CoreModule {}

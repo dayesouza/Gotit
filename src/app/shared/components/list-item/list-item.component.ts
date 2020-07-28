@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Item } from '../../models/item/item.model';
+import { Item } from '../../models/item.model';
 import { ItemModalComponent } from '../item-modal/item-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

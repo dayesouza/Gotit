@@ -1,5 +1,7 @@
 <div class="d-flex align-items-center flex-column">
-  <h1 class="title text-center my-5">Welcome to Gotit!</h1>
+  <h1 class="title text-center my-5">
+    Welcome to Gotit!
+  </h1>
   <div
     class="login d-flex align-items-center px-5 pt-2 pb-5 justify-content-between flex-column"
   >
@@ -27,6 +29,9 @@
           Facebook
         </button>
       </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="authService.error">
+      Error: {{ authService.error }}
     </div>
 
     <a class="btn btn-outline-success btn-block" routerLink="/landing">

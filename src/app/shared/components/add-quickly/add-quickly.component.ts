@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../../services/item/item.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Item } from '../../models/item/item.model';
+import { Item } from '../../models/item.model';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
