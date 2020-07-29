@@ -115,7 +115,6 @@ export class ItemsComponent implements OnInit {
     this.itemService.delete(item.id).then((s) => {
       this.toastr.success('Deleted with success!').onShown;
     });
-    // .finally(() => this.loadingService.stopLoading());
   }
 
   save(item) {
@@ -124,6 +123,5 @@ export class ItemsComponent implements OnInit {
       this.toastr.success('Saved with success!');
       this.resetFields();
     });
-    // .finally(() => this.loadingService.stopLoading());
   }
 }

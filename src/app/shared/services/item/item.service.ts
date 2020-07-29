@@ -70,14 +70,15 @@ export class ItemService {
     return this.authService.returnUser();
   }
 
-  shortenUrl(link: string) {
+  async shortenUrl(link: string) {
     if (!link) {
       return;
     }
-    return this.cuttlyService.shortenLink(link);
+    const shorten = await this.cuttlyService.shortenLink(link);
+    return shorten;
   }
 
-  persistDocument(_document_) {
+  async persistDocument(_document_: Item) {
     this.loadingService.startLoading();
     let _id: any;
     if (_document_.id) {
@@ -85,12 +86,13 @@ export class ItemService {
     } else {
       _id = this.firestore.createId();
       _document_.id = _id;
-      _document_.user = this.getUser();
+      _document_.createdBy = this.getUser();
       _document_.createdDate = new Date();
+      _document_.originalLink = _document_.link;
     }
 
     if (_document_.link) {
-      _document_.link = this.shortenUrl(_document_.link);
+      _document_.link = await this.shortenUrl(_document_.link);
     }
 
     return this.firestore

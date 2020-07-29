@@ -16,7 +16,7 @@
             <span *ngIf="!item.link" class="text-muted font-italic">--</span>
           </div>
           <small class="text-muted mb-2"
-            >Added by {{ item.user?.displayName || "unknown" }} on
+            >Added by {{ item.createdBy?.displayName || "unknown" }} on
             {{ item.createdDate | firebaseDate | date }}</small
           >
         </div>

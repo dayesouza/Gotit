@@ -12,9 +12,10 @@ export class CuttlyService {
 
   shortenLink(link: string) {
     if (!link.startsWith('https://cutt.ly')) {
-      this.http
+      return this.http
         .get(`${this.url}&short=${link}`)
-        .subscribe((value: Cuttly) => console.log(value.url.shortLink));
+        .toPromise()
+        .then((value: Cuttly) => value.url.shortLink);
     }
     return link;
   }
