@@ -11,11 +11,11 @@ export class CuttlyService {
   constructor(private http: HttpClient) {}
 
   shortenLink(link: string) {
-    // if (!link.startsWith('https://cutt.ly')) {
-    //   this.http
-    //     .get(`${this.url}&short=${link}`)
-    //     .subscribe((value: Cuttly) => console.log(value.url.shortLink));
-    // }
+    if (!link.startsWith('https://cutt.ly')) {
+      this.http
+        .get(`${this.url}&short=${link}`)
+        .subscribe((value: Cuttly) => console.log(value.url.shortLink));
+    }
     return link;
   }
 }
