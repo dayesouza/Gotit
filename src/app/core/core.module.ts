@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { NgBootstrapModule } from './ng-bootstrap.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoadingService } from './services/loading/loading.service';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
+import { ErrorHandlerService } from './services/error-handler.service';
+import { MyMonitoringService } from './services/logging.service';
 
 @NgModule({
   imports: [
@@ -44,6 +46,12 @@ import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
     ToastrModule,
     NgxLoadingModule,
   ],
-  providers: [AuthService, AngularFireAuthGuard, LoadingService],
+  providers: [
+    AuthService,
+    AngularFireAuthGuard,
+    LoadingService,
+    MyMonitoringService,
+    { provide: ErrorHandler, useClass: ErrorHandlerService },
+  ],
 })
 export class CoreModule {}

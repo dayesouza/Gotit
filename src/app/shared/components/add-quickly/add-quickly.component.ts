@@ -37,7 +37,7 @@ export class AddQuicklyComponent implements OnInit {
         this.resourceForm.reset();
       })
       .catch((_) => {
-        this.toastr.error('We have an error. Please try again.');
+        this.toastr.error('There was an error. Please try again.');
       });
   }
 

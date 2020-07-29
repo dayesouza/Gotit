@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { cuttlyKey } from '../../../../environments/key';
+import { environment } from '../../../../environments/environment';
 import { take } from 'rxjs/operators';
 import { Cuttly } from '../../models/cuttly.model';
 
 @Injectable({ providedIn: 'root' })
 export class CuttlyService {
-  url: string = `https://cutt.ly/api/api.php?key=${cuttlyKey}`;
+  url: string = `https://cutt.ly/api/api.php?key=${environment.cuttlyKey}`;
 
   constructor(private http: HttpClient) {}
 

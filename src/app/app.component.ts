@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, Renderer2, ElementRef } from '@angular/core';
 import { LoadingService } from './core/services/loading/loading.service';
+import { MyMonitoringService } from './core/services/logging.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent {
     private router: Router,
     private el: ElementRef,
     private renderer: Renderer2,
-    public loadingService: LoadingService
+    public loadingService: LoadingService,
+    private myMonitoringService: MyMonitoringService
   ) {
     router.events.subscribe((val) => {
       this.hideHeaderOrFooter();
