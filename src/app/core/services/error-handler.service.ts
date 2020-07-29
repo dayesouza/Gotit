@@ -8,6 +8,7 @@ export class ErrorHandlerService extends ErrorHandler {
   }
 
   handleError(error: Error) {
+    console.log('insight', error);
     this.loggingService.logException(error); // Manually log exception
   }
 }

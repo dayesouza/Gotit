@@ -88,7 +88,7 @@ export class ItemService {
       _document_.id = _id;
       _document_.createdBy = this.getUser();
       _document_.createdDate = new Date();
-      _document_.originalLink = _document_.link;
+      _document_.originalLink = _document_.link ?? null;
     }
 
     if (_document_.link) {
@@ -115,7 +115,6 @@ export class ItemService {
   // Protected
   protected jsonDataToResources(jsonData: any[]): Item[] {
     const resources: Item[] = [];
-    console.log(jsonData);
     jsonData.forEach((element) =>
       resources.push(this.jsonDataToResource(element))
     );

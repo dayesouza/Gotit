@@ -15,7 +15,6 @@ export class AuthService {
   ) {
     this.afAuth.onAuthStateChanged((user) => {
       if (user) {
-        console.log('new user', user);
         this.userDetails = user;
         localStorage.setItem('user', JSON.stringify(user));
         JSON.parse(localStorage.getItem('user'));
