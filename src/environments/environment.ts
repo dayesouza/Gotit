@@ -1,9 +1,8 @@
-import { firebase, cuttlyKey, appInsightsInstrumentationKey } from './key';
+import { firebase, appInsightsInstrumentationKey } from './key';
 
 export const environment = {
   production: false,
   firebase,
-  cuttlyKey,
   appInsights: {
     instrumentationKey: appInsightsInstrumentationKey,
   },

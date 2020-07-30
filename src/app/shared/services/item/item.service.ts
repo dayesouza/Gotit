@@ -9,7 +9,7 @@ import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { AuthService } from '../../../core/security/authService';
 import { LoadingService } from '../../../core/services/loading/loading.service';
-import { CuttlyService } from '../cuttly/cuttly.service';
+import { ShortenUrlService } from '../cuttly/shorten-url.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +22,7 @@ export class ItemService {
     private firestore: AngularFirestore,
     private authService: AuthService,
     private loadingService: LoadingService,
-    private cuttlyService: CuttlyService
+    private shortenUrlService: ShortenUrlService
   ) {
     this.resource = new Item();
   }
@@ -74,7 +74,7 @@ export class ItemService {
     if (!link) {
       return;
     }
-    const shorten = await this.cuttlyService.shortenLink(link);
+    const shorten = await this.shortenUrlService.shortenLink(link);
     return shorten;
   }
 
@@ -91,9 +91,9 @@ export class ItemService {
       _document_.originalLink = _document_.link ?? null;
     }
 
-    if (_document_.link) {
-      _document_.link = await this.shortenUrl(_document_.link);
-    }
+    // if (_document_.link) {
+    //   _document_.link = await this.shortenUrl(_document_.link);
+    // }
 
     return this.firestore
       .collection(this.baseName)

@@ -11,8 +11,8 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
 import { LinkPipe } from './pipes/link.pipe';
 import { FilterPipe } from './pipes/search.pipe';
-import { CuttlyService } from './services/cuttly/cuttly.service';
 import { ItemService } from './services/item/item.service';
+import { ShortenUrlService } from './services/cuttly/shorten-url.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { ItemService } from './services/item/item.service';
     LinkPipe,
     FilterPipe,
   ],
-  providers: [CuttlyService, ItemService],
+  providers: [ShortenUrlService, ItemService],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
   exports: [
     // shared modules
