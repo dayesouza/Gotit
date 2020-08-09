@@ -17,6 +17,7 @@ import { ShortenUrlService } from '../cuttly/shorten-url.service';
 export class ItemService {
   baseName = 'items';
   resource: Item;
+  protected user: firebase.User;
 
   constructor(
     private firestore: AngularFirestore,
@@ -25,13 +26,13 @@ export class ItemService {
     private shortenUrlService: ShortenUrlService
   ) {
     this.resource = new Item();
+    this.user = this.authService.returnUser();
   }
 
   private returnCollection(_query_?): AngularFirestoreCollection<Item> {
-    // return this.firestore.collection(this.baseName, (afs) =>
-    //   afs.where(`users.${this.userId}`, '==', 'true')
-    // );
-    return this.firestore.collection(this.baseName);
+    return this.firestore.collection(this.baseName, (afs) =>
+      afs.where(`users.${this.user.uid}`, '==', true)
+    );
   }
 
   getAll(): Observable<Item[]> {
@@ -45,7 +46,10 @@ export class ItemService {
 
   getLatest(quantity): Observable<Item[]> {
     const date = this.firestore.collection(this.baseName, (res) =>
-      res.orderBy('createdDate', 'desc').limit(quantity)
+      res
+        .orderBy('createdDate', 'desc')
+        .limit(quantity)
+        .where(`users.${this.user.uid}`, '==', true)
     );
     return date
       .valueChanges()
@@ -88,12 +92,8 @@ export class ItemService {
       _document_.id = _id;
       _document_.createdBy = this.getUser();
       _document_.createdDate = new Date();
-      _document_.originalLink = _document_.link ?? null;
+      _document_.users = { [this.user.uid]: true };
     }
-
-    // if (_document_.link) {
-    //   _document_.link = await this.shortenUrl(_document_.link);
-    // }
 
     return this.firestore
       .collection(this.baseName)

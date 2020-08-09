@@ -70,7 +70,7 @@
     <div class="w-100 text-center">
       <a href="{{ item.link | link }}" target="_blank"
         ><i class="fa fa-external-link" *ngIf="item.link"></i>
-        {{ item.link }}</a
+        {{ item.link | linkStr }}</a
       >
     </div>
     <small class="pull-right text-muted mb-2"

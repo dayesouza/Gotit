@@ -11,7 +11,7 @@
           <div class="w-100">
             <a href="{{ item.link | link }}" target="_blank"
               ><i class="fa fa-external-link" *ngIf="item.link"></i>
-              {{ item.link }}</a
+              {{ item.link | linkStr}}</a
             >
             <span *ngIf="!item.link" class="text-muted font-italic">--</span>
           </div>
