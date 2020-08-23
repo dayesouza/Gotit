@@ -12,7 +12,6 @@ import { FirebaseDatePipe } from './pipes/firebase-date.pipe';
 import { LinkPipe } from './pipes/link.pipe';
 import { FilterPipe } from './pipes/search.pipe';
 import { ItemService } from './services/item/item.service';
-import { ShortenUrlService } from './services/cuttly/shorten-url.service';
 import { LinkStrPipe } from './pipes/link-str.pipe';
 
 @NgModule({
@@ -27,7 +26,7 @@ import { LinkStrPipe } from './pipes/link-str.pipe';
     FilterPipe,
     LinkStrPipe,
   ],
-  providers: [ShortenUrlService, ItemService],
+  providers: [ItemService],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
   exports: [
     // shared modules
@@ -44,7 +43,7 @@ import { LinkStrPipe } from './pipes/link-str.pipe';
     FirebaseDatePipe,
     LinkPipe,
     FilterPipe,
-    LinkStrPipe
+    LinkStrPipe,
     // shared services
   ],
 })
