@@ -3,6 +3,7 @@
 [![Build Status](https://dev.azure.com/daysouza/Day-Projects/_apis/build/status/Gotit%20Angular?branchName=master)](https://dev.azure.com/daysouza/Day-Projects/_build/latest?definitionId=7&branchName=master)
 
 A project to keep track of the things you need to buy for you house.
+Try it: https://day-gotit.azurewebsites.net/landing
 
 # Programming:
 
