@@ -13,6 +13,7 @@ import { LinkPipe } from './pipes/link.pipe';
 import { FilterPipe } from './pipes/search.pipe';
 import { ItemService } from './services/item/item.service';
 import { LinkStrPipe } from './pipes/link-str.pipe';
+import { AppUpdateService } from './services/app-update/app-update.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { LinkStrPipe } from './pipes/link-str.pipe';
     FilterPipe,
     LinkStrPipe,
   ],
-  providers: [ItemService],
+  providers: [ItemService, AppUpdateService],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, FormsModule],
   exports: [
     // shared modules
