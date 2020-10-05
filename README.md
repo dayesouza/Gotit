@@ -6,7 +6,7 @@ A project to keep track of the things you need to buy for you house.
 
 Mockup: https://xd.adobe.com/view/d4aa5f58-f885-497a-9ced-5a32536fa634-81f9/
 
-Try it: https://day-gotit.azurewebsites.net/landing
+### [Demo Website](https://day-gotit.azurewebsites.net/landing)
 
 ## Development status: Writing Tests :warning:
 

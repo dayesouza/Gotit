@@ -17,7 +17,7 @@ showAppUpdateAlert() {
   const caller = this;
   // Use MatDialog or ionicframework's AlertController or similar
 
-  const confirmation = confirm("App update available. Confirm to update");
+  const confirmation = confirm("App updaate available. Confirm to update");
   if(confirmation) {
     this.doAppUpdate();
   }

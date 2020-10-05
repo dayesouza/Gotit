@@ -4,11 +4,11 @@
   "assetGroups": [
     {
       "name": "app",
-      "installMode": "prefetch",
-      "updateMode": "prefetch",
+      "installMode": "lazy",
+      "updateMode": "lazy",
       "resources": {
         "files": [
-          "/favicon.ico",
+          "/logo_D.png",
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
